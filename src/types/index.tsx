@@ -9,10 +9,12 @@ export interface CareerStep {
   description: string
   color: string
   details: StepDetails
+  detailUrl?: string
 }
 
 export interface StepBubbleProps {
   step: CareerStep
+  align: "left" | "right"
 }
 
 export interface DetailModalProps {
