@@ -1,3 +1,4 @@
+import type { ElementType } from "react"
 import type { StepBubbleProps } from "../types"
 
 const colorMap: Record<string, { bg: string; border: string; text: string; hoverBg: string; hoverText: string }> = {
@@ -11,30 +12,31 @@ const colorMap: Record<string, { bg: string; border: string; text: string; hover
 export default function StepBubble({ step, align }: StepBubbleProps) {
   const colors = colorMap[step.color] || colorMap["green-500"]
   const detailHref = step.detailUrl ?? "/details"
+  const clickable = Boolean(step.detailUrl)
+  const Wrapper: ElementType = clickable ? "a" : "div"
+  const wrapperProps = clickable ? { href: detailHref } : {}
   return (
     <>
-      <div className={`relative flex items-center mb-16 gap-6 sm:gap-10 ${align === "left" ? "flex-row" : "flex-row-reverse"}`}>
-        <div className="flex-shrink-0">
-          <div
-            className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center font-extrabold text-3xl sm:text-4xl text-white ring-4 ring-white shadow-lg ${colors.bg}`}
-            aria-label={`Step ${step.level}`}
-          >
-            {step.id}
-          </div>
-        </div>
-        <div className={`flex-1 max-w-xl ${align === "left" ? "text-right" : "text-left"}`}>
-          <p className="font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight">{step.level}</p>
-          <p className="mt-3 text-lg sm:text-xl text-gray-700 leading-relaxed">{step.description}</p>
-          <div className={`mt-4 flex ${align === "left" ? "justify-end" : "justify-start"}`}>
-            <a
-              href={detailHref}
-              className={`px-5 py-3 text-sm sm:text-base font-semibold rounded-full bg-gray-100 ${colors.text} ${colors.hoverBg} ${colors.hoverText} transition-colors duration-200 shadow-sm`}
+      <Wrapper
+        {...wrapperProps}
+        className={`group block ${clickable ? "cursor-pointer" : ""}`}
+        aria-label={clickable ? `View details for ${step.level}` : undefined}
+      >
+        <div className={`relative flex items-center mb-16 gap-6 sm:gap-10 ${align === "left" ? "flex-row" : "flex-row-reverse"}`}>
+          <div className="flex-shrink-0">
+            <div
+              className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center font-extrabold text-3xl sm:text-4xl text-white ring-4 ring-white shadow-lg ${colors.bg} ${clickable ? "transition-transform duration-200 group-hover:scale-105" : ""}`}
+              aria-label={`Step ${step.level}`}
             >
-              VIEW DETAILS
-            </a>
+              {step.id}
+            </div>
+          </div>
+          <div className={`flex-1 max-w-xl ${align === "left" ? "text-right" : "text-left"}`}>
+            <p className={`font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight text-outline-white ${clickable ? "group-hover:underline" : ""}`}>{step.level}</p>
+            <p className="mt-3 text-lg sm:text-xl text-gray-700 leading-relaxed text-outline-white">{step.description}</p>
           </div>
         </div>
-      </div>
+      </Wrapper>
     </>
   )
 }

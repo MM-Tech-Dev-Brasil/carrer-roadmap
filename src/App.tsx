@@ -70,7 +70,7 @@ const careerData: CareerStep[] = [
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-gray-50 to-blue-50 font-sans">
       <Header />
       <main className="container mx-auto px-4 py-10 relative">
         <div className="relative w-full flex justify-center min-h-screen">
