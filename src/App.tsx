@@ -1,7 +1,7 @@
 import Header from './components/header.component'
 import StepBubble from './components/stepBubble.component'
 import './index.css'
-import scurve from './assets/scurve.svg'; 
+import scurve from './assets/scurve.svg'
 import type { CareerStep } from './types'
 
 const careerData: CareerStep[] = [
@@ -68,27 +68,45 @@ const careerData: CareerStep[] = [
   },
 ];
 
+const verticalAdjustments: Record<number, string> = {
+  4: "-translate-y-7",
+  5: "-translate-y-8",
+  6: "-translate-y-9",
+}
+
+const TIMELINE_WIDTH = 1100
+
 export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 via-gray-50 to-blue-50 font-sans">
       <Header />
-      <main className="container mx-auto px-4 py-10 relative">
-        <div className="relative w-full flex justify-center min-h-screen">
-          <div
-            className="relative w-full min-h-screen bg-no-repeat bg-top bg-contain"
-            style={{ backgroundImage: `url(${scurve})` }}
-          >
-            <div className="relative flex flex-col w-full z-10">
-              {careerData.map((step, index) => (
-                <div
-                  key={step.id}
-                  className={`flex w-full mt-14 sm:mt-24 ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                >
-                  <div className="w-full max-w-3xl">
-                    <StepBubble step={step} align={index % 2 === 0 ? 'left' : 'right'} />
-                  </div>
-                </div>
-              ))}
+      <main className="w-full overflow-x-auto py-10 relative">
+        <div
+          className="mx-auto"
+          style={{ width: TIMELINE_WIDTH, minWidth: TIMELINE_WIDTH }}
+        >
+          <div className="relative w-full flex justify-center min-h-screen">
+            <div
+              className="relative w-full min-h-screen bg-no-repeat bg-top bg-contain"
+              style={{ backgroundImage: `url(${scurve})` }}
+            >
+              <div className="relative flex flex-col w-full z-10">
+                {careerData.map(step => {
+                  const isEvenStep = step.id % 2 === 0
+                  const spacingClass = step.id > 2 ? "mt-2" : "mt-6"
+                  const verticalShiftClass = verticalAdjustments[step.id] ?? ""
+                  return (
+                    <div
+                      key={step.id}
+                      className={`flex w-full ${spacingClass} ${verticalShiftClass} justify-center`}
+                    >
+                      <div className={`w-full max-w-3xl ${isEvenStep ? "pl-20" : "pr-12"}`}>
+                        <StepBubble step={step} reverse={isEvenStep} />
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -3,18 +3,28 @@ export interface StepDetails {
   goals: string[]
 }
 
+export type MarkerColor = "pink-500" | "blue-500" | "orange-500" | "purple-500" | "red-500" | "green-500"
+
 export interface CareerStep {
   id: number
   level: string
   description: string
-  color: string
+  color: MarkerColor
   details: StepDetails
   detailUrl?: string
 }
 
 export interface StepBubbleProps {
   step: CareerStep
-  align: "left" | "right"
+  reverse?: boolean
+}
+
+export interface StepDotProps {
+  id: number | string
+  color: MarkerColor
+  clickable?: boolean
+  ariaLabel?: string
+  direction: "left" | "right"
 }
 
 export interface DetailModalProps {

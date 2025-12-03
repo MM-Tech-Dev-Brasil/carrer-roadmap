@@ -6,7 +6,7 @@ import englishImage from "../assets/3.png";
 import projectsImage from "../assets/4.png";
 import experienceImage from "../assets/5.png";
 import tipsImage from "../assets/6.png";
-import SectionCard, { SectionConfig } from "../components/sectionCard.component";
+import SectionCard, { type SectionConfig } from "../components/sectionCard.component";
 
 const JuniorDetails: React.FC = () => {
   const cardBase = "flex flex-col w-full md:aspect-square";
