@@ -19,20 +19,7 @@ export interface StepBubbleProps {
   reverse?: boolean
 }
 
-export interface StepDotProps {
-  id: number | string
-  color: MarkerColor
-  clickable?: boolean
-  ariaLabel?: string
-  direction: "left" | "right"
-}
-
 export interface DetailModalProps {
   step: CareerStep | null
   onClose: () => void
-}
-
-export interface ArrowDown {
-  direction: "left" | "right" 
-  length?: number 
 }

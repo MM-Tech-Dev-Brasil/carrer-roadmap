@@ -1,6 +1,4 @@
-import React from "react";
-
-const DefaultDetails: React.FC = () => {
+const DefaultDetails = () => {
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <header className="bg-cyan-400 text-center py-12 shadow-md">
