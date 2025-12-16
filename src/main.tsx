@@ -7,7 +7,7 @@ import DefaultDetails from './pages/DefaultDetails.tsx'
 
 const path = window.location.pathname
 const pages: Record<string, ComponentType> = {
-  '/details-junior': JuniorDetails,
+  '/details-junior-2': JuniorDetails,
   '/details': DefaultDetails,
 }
 const Page = pages[path] ?? App

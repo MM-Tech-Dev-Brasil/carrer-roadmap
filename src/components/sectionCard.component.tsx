@@ -8,6 +8,7 @@ export type SectionConfig = {
   imageSrc: string;
   imageClass?: string;
   contentClass?: string;
+  itemsWrapperClass?: string;
 };
 
 type SectionCardProps = {
@@ -29,6 +30,7 @@ const SectionCard = ({ config, cardBaseClass }: SectionCardProps) => {
           items={config.items}
           listClass={config.listClass}
           contentClass={config.contentClass}
+          wrapperClass={config.itemsWrapperClass}
         />
       </div>
     </section>
@@ -72,18 +74,21 @@ type CardItemsProps = {
   items: string[];
   listClass?: string;
   contentClass?: string;
+  wrapperClass?: string;
 };
 
-const CardItems = ({ items, listClass, contentClass }: CardItemsProps) => (
-  <div className={`mt-8 ${contentClass ?? ""}`}>
-    <ul className={`space-y-5 text-2xl lg:text-3xl leading-relaxed list-none ${listClass ?? ""}`}>
-      {items.map((item, index) => (
-        <li key={index} className="flex gap-3">
-          <span className="text-3xl leading-tight">•</span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
+const CardItems = ({ items, listClass, contentClass, wrapperClass }: CardItemsProps) => (
+  <div className={`mt-8 flex-1 flex flex-col ${wrapperClass ?? ""}`}>
+    <div className={`${contentClass ?? ""}`}>
+      <ul className={`space-y-5 text-2xl lg:text-3xl leading-relaxed list-none font-bold ${listClass ?? ""}`}>
+        {items.map((item, index) => (
+          <li key={index} className="flex gap-3">
+            <span className="text-3xl leading-tight">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 );
 

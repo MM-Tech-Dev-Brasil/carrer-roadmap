@@ -55,8 +55,8 @@ const sectionConfigs: SectionConfig[] = [
       "Write basic communication (emails, chats, tickets).",
     ],
     backgroundClass: "bg-green-500",
-    titleClass: "text-white",
-    listClass: "text-white",
+    titleClass: "text-black",
+    listClass: "text-black",
     borderClass: "border-b md:border-b-0 md:border-r border-slate-200",
     imageSrc: englishImage,
     imageClass: "top-0 right-0 h-full w-1/2 object-contain",
@@ -87,8 +87,9 @@ const sectionConfigs: SectionConfig[] = [
     listClass: "text-blue-500",
     borderClass: "border-t md:border-t-0 md:border-r border-slate-200",
     imageSrc: experienceImage,
-    imageClass: "top-0 left-0 h-full w-1/2 object-contain",
+    imageClass: "top-0 left-10 h-full w-1/2 object-contain",
     contentClass: "ml-auto w-1/2",
+    itemsWrapperClass: "justify-center mt-0",
   },
   {
     title: "TIPS TO GET THERE",
@@ -103,7 +104,8 @@ const sectionConfigs: SectionConfig[] = [
     borderClass: "border-t border-slate-200",
     imageSrc: tipsImage,
     imageClass: "top-0 left-0 h-full w-1/2 object-contain",
-    contentClass: "ml-auto w-1/2",
+    contentClass: "ml-auto w-1/2 pl-10",
+    itemsWrapperClass: "justify-center mt-0",
   },
 ];
 
@@ -134,10 +136,10 @@ const HeroSection = ({ backgroundImage, content }: HeroSectionProps) => (
     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 relative z-10 w-full text-white drop-shadow">
       <div className="max-w-xl">
         <div className="flex flex-wrap items-baseline gap-3">
-          <p className="text-3xl lg:text-4xl font-light">{content.subtitle}</p>
+          <p className="text-3xl lg:text-4xl font-bold">{content.subtitle}</p>
           <h1 className="text-7xl lg:text-8xl font-black text-emerald-200">{content.highlight}</h1>
         </div>
-        <p className="mt-3 text-3xl lg:text-4xl font-semibold">{content.tagline}</p>
+        <p className="mt-3 text-3xl lg:text-4xl font-bold">{content.tagline}</p>
       </div>
     </div>
   </section>

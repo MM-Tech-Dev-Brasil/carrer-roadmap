@@ -9,6 +9,7 @@ export default function StepBubble({ step, reverse = false }: StepBubbleProps) {
   const wrapperProps = clickable ? { href: detailHref } : {}
   const isReverse = Boolean(reverse)
   const dotDirection = isReverse ? "right" : "left"
+  const textAlignment = isReverse ? "text-left" : "text-right"
   return (
     <Wrapper
       {...wrapperProps}
@@ -16,7 +17,7 @@ export default function StepBubble({ step, reverse = false }: StepBubbleProps) {
       aria-label={clickable ? `View details for ${step.level}` : undefined}
     >
       <div className={`relative flex items-center mb-16 gap-36 ${isReverse ? "flex-row-reverse" : "flex-row"}`}>
-        <div className="flex-1 max-w-xl text-left">
+        <div className={`flex-1 max-w-xl ${textAlignment}`}>
           <p className={`font-extrabold text-2xl text-gray-900 tracking-tight text-outline-white ${clickable ? "group-hover:underline" : ""}`}>{step.level}</p>
           <p className="mt-3 text-lg text-gray-700 leading-relaxed text-outline-white">{step.description}</p>
         </div>

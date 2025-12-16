@@ -20,7 +20,7 @@ const careerData: CareerStep[] = [
     level: "JUNIOR I & II",
     description: "You're no longer just watching — now you're building! You handle tasks, play with your stack, and learn something new every single day!",
     color: "blue-500",
-    detailUrl: "/details-junior",
+    detailUrl: "/details-junior-2",
     details: {
       skills: ['React/Angular/Vue', 'REST APIs', 'Unit Testing', 'Basic Deployment'],
       goals: ['Lead a small feature', 'Mentor an Intern']
